@@ -1,0 +1,44 @@
+<h3 class="mdc-typography--headline3">Serving Data from a Google Sheet</h3>
+<ul class="mdc-list demo-list mdc-list--two-line">
+  <li class="template mdc-list-item mdc-ripple-upgraded" tabindex="-1"><span class="mdc-list-item__text"><span class="mdc-list-item__primary-text">Line item</span><span class="mdc-list-item__secondary-text">Secondary text</span></span></li>
+</ul>
+<img id="loading" src="https://i.gifer.com/4V0b.gif">
+
+
+<script>
+/*
+  page pulls data from a Google Sheet using a custom script;  see the Sheet example at 
+  https://docs.google.com/spreadsheets/d/1jLSnE4pLTB6ahkxlCbmpFBpjBYdP3RDqj53fD8J5_HU/edit?usp=sharing
+
+*/
+
+var sheetWebAppEndpoint = "https://script.google.com/macros/s/AKfycbyzCz_YtY7jXX4PIm9Sdab9Kz5RZSfmGZ29PlbH4ODnOoO1_rFy/exec";
+
+
+
+
+var params = {
+  "dataset":"Sheet1"
+  };
+
+var url = sheetWebAppEndpoint + "?" + $.param(params);
+
+$.get(url, function(response){
+  $("#loading").hide();
+  handleResponse(response);
+
+});
+
+
+function handleResponse(data) {
+  console.log("handleResponse", data)
+  $.each(data, function(i,v){
+    var clone = $("#content li.template").clone();
+    clone.find(".mdc-list-item__primary-text").text("Customer name: " + v["Customer Name"]);
+    clone.find(".mdc-list-item__secondary-text").text("Product: " + v["Product Name"]);
+    clone.removeClass("template");
+    clone.attr("id", v.name);
+    $("#content ul").append(clone);  
+  });
+}
+</script>

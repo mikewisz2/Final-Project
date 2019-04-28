@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width">
+  	<meta name="google-signin-client_id" content="455879692718-31a814ua0ch6tal2errkrtf4976ckq1h.apps.googleusercontent.com">
+
+	<title>Chicago Tutors</title>
+	<link rel="manifest" href="./manifest.json">
+	
+	<link rel="stylesheet" href="https://unpkg.com/material-components-web@0.40.0/dist/material-components-web.min.css" />
+	<link href="style.css" rel="stylesheet" type="text/css" />
+	<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+</head>
+
+<body>
+	<!-- top nav bar -->
+	<header class="mdc-top-app-bar">
+		<div class="mdc-top-app-bar__row">
+			<section class="mdc-top-app-bar__section mdc-top-app-bar__section--align-start">
+				<a href="#" class="material-icons mdc-top-app-bar__navigation-icon">menu</a>
+				<span class="mdc-top-app-bar__title">Chicago Tutors</span>
+        <p Welcome to Chicago Tutors!</p>
+			</section>
+		</div>
+	</header>
+
+	<!-- the navigation drawer -->
+	<aside class="mdc-drawer mdc-drawer--modal" data-mdc-auto-init="MDCDrawer">
+		<div class="mdc-drawer__header">
+
+		</div>
+		<div class="mdc-drawer__content">
+			<nav class="mdc-list">
+				<a data-screen="home" class="mdc-list-item mdc-list-item--activated" href="#" tabindex="0" aria-selected="true"><i class="material-icons mdc-list-item__graphic" aria-hidden="true">home</i>Sign In</a>
+				
+			</nav>
+		</div>
+	</aside>
+	
+  
+  <div class="mdc-drawer-scrim"></div>
+	<div id="contentArea">
+    <div class="mdc-top-app-bar--fixed-adjust"></div>
+    <div id="content" class="mdc-typography--body1"></div>
+  </div>
+  
+<html lang=”en”>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Name of your awesome camera app -->
+    <title>Camera App</title>
+    <!-- Link to your main style sheet-->
+    <link rel="stylesheet" href="stylecamera.css">
+</head>
+  
+  <script src="https://unpkg.com/dexie@latest/dist/dexie.js"></script>
+<h3 class="mdc-typography--headline3">Sign In</h3>
+<p>Welcome to Chicago Tutors!</p>
+<p>Create a new profile</p>
+  
+<div id ="myDIV" style="visibility:hidden;">You have successfully logged in!
+</div>
+
+<div id ="myDIV1" style="visibility:hidden;">Here is your log in information.
+</div>  
+  
+<div id ="myDIV2" style="visibility:hidden;">Please go to the map and find yourself a tutor!
+</div>
+  
+<body>
+    <!-- Camera -->
+    <main id="camera">
+        <!-- Camera sensor -->
+        <canvas id="camera--sensor"></canvas>
+        <!-- Camera view -->
+        <video id="camera--view" autoplay playsinline></video>
+        <!-- Camera output -->
+        <img src="//:0" alt="" id="camera--output">
+        <!-- Camera trigger -->
+        <button id="camera--trigger">Take a picture</button>
+    </main>
+    <!-- Reference to your JavaScript file -->
+    <script src="scriptcamera.js"></script>
+</body>
+</html>
+	
+  
+  <section class="hero">
+        <div class="mdc-text-field">
+          <input type="text" class="mdc-text-field__input" id="Username">
+          <label for="my-text-field" class="mdc-floating-label">Username</label>
+          <div class="mdc-line-ripple"></div>
+        </div>
+      </section>
+
+
+<section class="hero">
+        <div class="mdc-text-field">
+          <input type="text" class="mdc-text-field__input" id="Password">
+          <label for="my-text-field" class="mdc-floating-label">Password:</label>
+          <div class="mdc-line-ripple"></div>
+        </div>
+      </section>
+
+<div class="mdc-select">
+  <i class="mdc-select__dropdown-icon"></i>
+  <select class="mdc-select__native-control">
+    <option value="" disabled selected></option>
+    <option value="january">
+      January
+    </option>
+    <option value="febuary">
+      Febuary
+    </option>
+    <option value="march">
+      March
+    </option>
+    <option value="april">
+      April
+    </option>
+    <option value="may">
+      May
+    </option>
+    <option value="june">
+      June
+    </option>
+    <option value="july">
+      July
+    </option>
+    <option value="august">
+      August
+    </option>
+    <option value="september">
+      September
+    </option>
+    <option value="october">
+      October
+    </option>
+    <option value="november">
+      November
+    </option>
+    <option value="december">
+      December
+    </option>
+  </select>
+  <label class="mdc-floating-label">Date of Birth</label>
+  <div class="mdc-line-ripple"></div>
+</div>
+
+<section class="hero">
+        <div class="mdc-text-field">
+          <input type="text" class="mdc-text-field__input" id="Email">
+          <label for="my-text-field" class="mdc-floating-label">Email:</label>
+          <div class="mdc-line-ripple"></div>
+        </div>
+      </section>
+
+  
+<button class="mdc-button">
+  <span class="mdc-button__label" onclick="storeInfo()">Sign in</span>
+</button>
+  
+<body>
+<div id="list">
+  </div>
+
+<script>
+  
+  var db = new Dexie("users_database");
+    db.version(1).stores({
+      users: 'username,email'
+    });
+  
+  function storeInfo(){
+
+    var passwordText = document.getElementById("Email");
+    passwordText.style.visibility = "hidden";
+    $(".hero").hide();
+    $(".mdc-select").hide();
+    $(".mdc-button").hide();
+    $("p").hide();
+    $("h3").hide();
+    
+    document.getElementById("myDIV").style.visibility = 'visible';
+    
+    var username1 = document.getElementById("Username").value;
+    var password1 = document.getElementById("Password").value;
+    var email1 = document.getElementById("Email").value;
+    var picture1 = document.getElementById("camera--output").src;
+    
+    db.users.put({username: username1, password: password1, email: email1, picture: picture1});
+    db.users.each(function(user) {
+      console.log(user.username);
+      console.log(user.password);
+      console.log(user.email);
+      console.log(user.picture);
+      document.getElementById("myDIV1").style.visibility = 'visible';
+      document.getElementById("list").innerHTML += "<p>" + user.username + "<br>" + user.email + "</p>";
+    });
+  }
+</script>
+</body>
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<script src="https://unpkg.com/material-components-web@0.40.0/dist/material-components-web.min.js"></script>
+	<script src="script.js"></script>
+  
+  
+  <!-- putting the Google library scripts at the top level due to use across screens -->
+  
+  <script src="https://apis.google.com/js/platform.js"></script>
+  
+  <script src="https://apis.google.com/js/api.js"></script>
+
+  <script>
+  	if ('serviceWorker' in navigator) {
+  navigator.serviceWorker.register('./sw.js')
+  .then(function(reg) {
+    // registration worked
+    console.log('Registration succeeded. Scope is ' + reg.scope);
+  }).catch(function(error) {
+    // registration failed
+    console.log('Registration failed with ' + error);
+  });
+}
+  </script>
+
+
+</body>
+
+</html>

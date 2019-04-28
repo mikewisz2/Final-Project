@@ -1,0 +1,79 @@
+<html>
+  <head>
+    <style>
+       /* Set the size of the div element that contains the map */
+      #map {
+        height: 800px;  /* The height is 400 pixels */
+        width: 100%;  /* The width is the width of the web page */
+       }
+    </style>
+  </head>
+  <body>
+    <h3>Tutors currently available</h3>
+    <!--The div element for the map -->
+    <div id="map"></div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+    <script>
+// Initialize and add the map
+function initMap() {
+  // The location of Uluru
+  var chicago = {lat: 41.8781, lng: -87.6298};
+  // The map, centered at Uluru
+  var map = new google.maps.Map(
+      document.getElementById('map'), {zoom: 11, center: chicago});
+
+  $.get("https://data.cityofchicago.org/resource/5tiy-yfrg.json",
+
+      function(response) {
+        console.log("in data callback");
+        var data = response;
+        createMarkers(map, data );
+      });
+  
+  $.get("https://data.cityofchicago.org/resource/inr8-nr2v.json",
+        function(response) {
+          console.log("in data callback");
+          var data = response;
+          createMarkers(map, data);
+      });
+}
+      
+
+  function createMarkers (map, data) {
+    console.log(data);
+    $.each(data, function(i,v) {
+
+      var location = {lat: parseFloat(v.latitude), lng: parseFloat(v.longitude) }
+      
+      var marker = new google.maps.Marker({position: location, map: map});
+      
+      var info = v.site_name + " " + v.name_of_school;
+
+      var infowindow = new google.maps.InfoWindow({
+        content: info
+      });
+
+      marker.addListener('click', function() {
+        infowindow.open(map, marker);
+      });
+
+    });
+
+  }
+
+
+
+    </script>
+    <!--Load the API from the specified URL
+    * The async attribute allows the browser to render the page while the API loads
+    * The key parameter will contain your own API key (which is not needed for this tutorial)
+    * The callback parameter executes the initMap() function
+    -->
+    <script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDa4dMSOASs_iLQnhrPoQ8EZgj2Im_pZ7o&callback=initMap">
+    </script>
+  </body>
+</html>
+

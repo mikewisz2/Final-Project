@@ -1,0 +1,14 @@
+{
+  "name": "Chicago Tutors",
+  "short_name": "Chicago Tutors",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "background_color": "navy",
+  "description": "A sample PWA",
+  "icons": [{
+    "src": "./warning.png",
+    "sizes": "256x256",
+    "type": "image/png"
+  }],
+  "related_applications": []
+}

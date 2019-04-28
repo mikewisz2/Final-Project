@@ -1,0 +1,96 @@
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width">
+	<title>repl.it</title>
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+	 crossorigin="anonymous">
+
+   <style>
+     .template {display:none;}
+    </style>
+  
+  <p>Click on the tutor you want to connect with!</p>
+</head>
+<body>
+<div class="card template" style="width: 18rem;">
+		<div class="card-body">
+			<h5 id="title" class="card-title">Card title</h5>
+			<h6 id="subtitle" class="card-subtitle mb-2 text-muted">Card subtitle</h6>
+			<p id="text" class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+			<a id="projectLink" href="#" class="btn btn-primary">Connect</a>
+		</div>
+	</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js">
+  </script>
+  
+  <div id ="myDIV3" style="visibility:hidden;">
+</div>
+  
+
+<script>
+		$(document).ready(function(){
+      var name = "";
+      $("body").on("click", ".btn", function(e) {name = ($(this).val());
+                                                 myDIV3.innerHTML =  "You are connected with " + name;
+                                                document.getElementById("myDIV3").style.visibility = 'visible';});
+      var dataname = "";
+      $("body").on("click", ".btn", function(e) {dataname = await });
+    console.log("dataname");
+      var url = "https://data.cityofchicago.org/resource/5tiy-yfrg.json";
+$.get(url, function(response) {
+  console.log(response);
+  var data = response;
+  $.each(data, function(i,v) {
+    var clone = $(".template").clone();
+    clone.find(".card-title").text(v.name_of_school);
+    clone.find(".btn").val(v.name_of_school);
+    clone.find(".card-title").addClass(v.results);
+    clone.find(".card-title").attr("data-results", v.results);
+    clone.find(".card-text").text(v.phone_number);
+    clone.find(".card-subtitle").text(v.street_address);    
+    clone.removeClass("template");
+    $("body").append(clone);
+  });
+  
+})  
+  
+});
+	</script>
+  
+  <script>
+		$(document).ready(function(){
+      var name = "";
+     $("body").on("click", ".btn", function(e) {name = ($(this).val());
+                                                 myDIV3.innerHTML =  "You are connected with " + name;
+                                                document.getElementById("myDIV3").style.visibility = 'visible';});
+      
+      var url = "https://data.cityofchicago.org/resource/inr8-nr2v.json";
+$.get(url, function(response) {
+  console.log(response);
+  var data = response;
+  $.each(data, function(i,v) {
+    var clone = $(".template").clone();
+    clone.find(".card-title").text(v.site_name);
+    clone.find(".btn").val(v.site_name);
+    clone.find(".card-title").addClass(v.results);
+    clone.find(".card-title").attr("data-results", v.results);
+    clone.find(".card-text").text(v.phone_number);
+    clone.find(".card-subtitle").text(v.address);
+    clone.removeClass("template");
+    $("body").append(clone);
+  });
+})
+      
+      
+});
+	</script>
+  
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut"
+	 crossorigin="anonymous">
+
+	</script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k"
+	 crossorigin="anonymous">
+  </script>
+</body>
