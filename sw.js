@@ -3,10 +3,10 @@ var appShellFiles = [
  "./index.html",
  "./script.js",
  "./style.css",
- "./warning.png"
- "./_about.html"
- "./_resources.html"
- "./_sheet-as-api.html"
+ "./warning.png",
+ "./screen-content/_about.html",
+ "./screen-content/_resources.html",
+ "./screen-content/_sheet-as-api.html"
 ];
 
 
